@@ -1,0 +1,109 @@
+import pandas as pd 
+import numpy as np 
+import seaborn as sns 
+import matplotlib.pyplot as plt
+
+df=pd.read_csv("Heart.csv")
+
+df
+df.info()
+df.describe()
+df.head()
+# pi chart
+size=[143,233,1,2,150,2.3]
+labels='restecg','fbs','chol','oldpeak','trestbps'
+plt.pie(size,labels=size)
+plt.title("physical condition")
+plt.axis("equal")
+plt.show()
+
+#bar plot
+data={'63':233,'67':286,'37':250,'41':204}
+age=list(data.keys())
+values=list(data.values())
+fig=plt.figure(figsize=(10,5))
+plt.bar(age,values,width=0.4)
+plt.xlabel("age")
+plt.ylabel("restbp")
+
+#histogram
+data=df.restecg#restbp name
+plt.hist(data,edgecolor='black',color='red')
+plt.xlabel("restecg")
+plt.ylabel("age")
+plt.show()
+
+#scatter plt
+data=df.restecg
+y=df.age
+plt.scatter(data,y)
+plt.xlabel("restecg")
+plt.ylabel("age")
+
+#linear graph
+x=[97,63,67,41]
+y=[250,233,286,206]
+plt.plot(x,y)
+plt.title("linear graph")
+plt.xlabel("age")
+plt.ylabel("restecg")
+
+heart=pd.read_csv("Heart.csv")
+sns.catplot(x="age",y="restecg",data=heart)
+
+#boxplot
+df.boxplot(by='age',column=['chol'],grid=False)
+
+data=df[["restecg","chol"]]
+data.plot(kind='bar')
+plt.xlabel("age")
+plt.ylabel("disese")
+plt.show()
+
+df1=pd.read_csv("dataset_Facebook.csv",sep=';')
+
+df1
+
+df.info()
+
+df1.info()
+
+df1.describe()
+
+#piechart
+size=[1,88,4,2,23,10.27]
+labels='Category','Post Month','Post Weekday','Post Hour',"Paid"
+plt.pie(size,labels=size)
+plt.title("pie chart")
+plt.show()
+
+#bar plt
+data={'1':4,'2':7,'3':10}
+Category=list(data.keys())
+values=list(data.values())
+fig=plt.figure(figsize=(10,5))
+plt.bar(Category,values,width=0.4)
+plt.xlabel('Category')
+plt.ylabel('Post Month')
+plt.show()
+
+data=df1.Category
+plt.hist(data,color='red',edgecolor='black')
+plt.title('histogram')
+plt.show()
+
+sns.countplot(x='Type',hue='Paid',data=df1)
+
+plt.figure(figsize=(8,6))
+sns.boxplot(x=df1['Category'],y=df1['like'],data=df1,palette='viridis')
+plt.ylim(0,700)
+
+x=df1['Post Month']
+y=df1['like']
+plt.scatter(x,y)
+
+sns.catplot(x='Type',y='share',data=df1)
+
+x=df1['share']
+y=df1['like']
+plt.plot(x,y)
