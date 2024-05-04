@@ -1,0 +1,135 @@
+import pandas as pd.
+import numpy as np
+df= pd.read_csy("Ainquality.csv", encoding='cp1552')
+df
+df.head()
+df shape
+df.info()
+df.isnull.Sum()
+df.count()
+df.describe()
+df.info
+df.fillna(0)
+df.dropna()
+df=df.drop(['stn_code','agency','location_monitoring'),axis=1)
+df.isna(). Sum()
+#drop the feature
+df=df. drop (Subset =['date'])
+df.columns
+df['type'].unique ()
+types = {
+"Resedential":"k",
+Resedentialandothers":"RO",
+"Industrial Area":"I",
+"Industrial Areas: "I",
+"Industrial":"I",
+"Sensitive": "s",
+" Sensitive Area": "s",
+"Sensitive Areas": "s",
+"Nan": "PRO",
+"Resedential ,Rural and other Areas":"MO"
+}
+df.type = df. type replace (types)
+# change the types to uniform format:
+df['type'] unique()
+df.head()
+df.info()
+#create a your colum
+df[ date ]= pd. to_datetime (df ['date'], errors="coerce")
+df.head()
+df['year']=df.date.dt.year
+df.head(5)
+# handling missing values
+COLS = ['so2', 'no2', 'rspm', 'pm2_5']
+df.info()
+
+import numpy as np
+from sklearn impute import SimpleImputer
+Imputer:SimpleImputer(missing_values=np.nan, stategy='mean')
+df [COLS]=imputer.fit_tansform (df [COLS))
+di.head()
+df.nunique()
+df. duplicated() (option#discovering duplicates)
+df. duplicated().sum()
+df.drop_duplicates(inplace =True)
+df.head()
+df ['type'].value_counts()
+df['type').replace({I'MO':1, 'I': 2,'s':3,'RO':4,'k':5,'RIRUO':6},inplace = true)
+df.info()
+df['type']
+#label encoding
+from sklearn.preprocessing import LabelEncoder
+labelencoder=LabelEncoder()
+df['satate']labelencoder.fit_trantorm (df ['state'])
+df.head()
+dfAndhra = df[df ['state'] ==0]
+dfAndhra 
+dfAndhra['location'].value_Counts()
+import sklearn
+print(sklearn.__version__)
+pip install --upgrade scikit-learn
+foom sklearn.preprocessing import OneHotEncoder
+nehotencoder = OneHotEncoder()
+#onehotencoder = OneHotEncoder(sparse=False, handle_unknown='error', drop='first')
+onehotencoder.sparse = False
+onehotencoder.handle_unknown = 'error'
+onehotencoder.drop = 'first'
+
+Pd.DataFrame(onehotencoder.fit_transtorm (dfAndhra[['location']]))
+
+df Andhra['location'].valve_counts()
+#error correction
+df.isnull ().surm()
+df
+df1=df.iloc[:,4:9]
+df1=df1-filina(df1.median())
+df1
+df.describle()
+df [df [soa']>100]=0
+
+#heart
+import pandas as pd 
+df=pd.read_csv("Heart.csv")
+df.head()
+df.info()
+df.describe()
+df.shape
+df.isnull().sum()
+df.dropna()
+df.dtypes
+df.nunique()
+df['ca'].unique()
+df.ca.value_counts()
+from sklearn import linear_model,metrics
+x=df[["age"]]
+y=df[["thal"]]
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=1)
+len(x_train)
+len(x_test)
+df.shape
+reg=linear_model.LinearRegression()
+
+from sklearn import svm
+clf=svm.SVC(kernel='linear')
+clf.fit(x_train,y_train)
+y_pred=clf.predict(x_test)
+
+from sklearn import metrics
+accuracy=metrics.accuracy_score(y_test,y_pred)
+print("Accuracy:",accuracy)
+precision = metrics.precision_score(y_test, y_pred, average='macro')  
+print("Precision:", precision)
+
+recall = metrics.recall_score(y_test, y_pred, average='macro')  
+print("Recall:", recall)
+
+import matplotlib.pyplot as plt
+
+# Assuming x_train, y_train, and y_predict are defined elsewhere
+plt.scatter(x_train, y_train, color='black')
+plt.plot(x_train, reg_predict, color='blue', linewidth=3)
+plt.title("Age vs thal")
+plt.xlabel("Age")
+plt.ylabel("thal")
+plt.show()
