@@ -1,0 +1,22 @@
+#create suset
+df1=df[['Page total likes','Category','Post Month','Post Weekday']].loc[0:15]
+df2=df[['Page total likes','Category','Post Month','Post Weekday']].loc[16:30]
+df2=df[['Page total likes','Category','Post Month','Post Weekday']].loc[16:30]
+#merge dataset
+merging =pd.concat([df1,df2,df3])
+merging
+#sort
+sort_values=df.sort_values('Page total likes',ascending =False)#(kind=mergesort)
+sort_values
+#transpose data
+transposing=df.transpose()
+transposing
+#shape and Reshape
+shaping=df.shape
+shaping
+
+import pandas as pd
+
+pivot_table = pd.pivot_table(df, index=['Type', 'Category'], values='like')
+print(pivot_table)
+
